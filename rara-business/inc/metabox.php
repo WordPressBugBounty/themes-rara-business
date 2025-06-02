@@ -21,31 +21,36 @@ function rara_business_add_sidebar_layout_box(){
 }
 add_action( 'add_meta_boxes', 'rara_business_add_sidebar_layout_box' );
 
-$rara_business_sidebar_layout = array(    
-    'default-sidebar'=> array(
-    	 'value'     => 'default-sidebar',
-    	 'label'     => __( 'Default Sidebar', 'rara-business' ),
-    	 'thumbnail' => get_template_directory_uri() . '/images/default-sidebar.png'
-   	),
-    'no-sidebar'     => array(
-    	 'value'     => 'no-sidebar',
-    	 'label'     => __( 'Full Width', 'rara-business' ),
-    	 'thumbnail' => get_template_directory_uri() . '/images/no-sidebar.png'
-   	),    
-    'left-sidebar' => array(
-         'value'     => 'left-sidebar',
-    	 'label'     => __( 'Left Sidebar', 'rara-business' ),
-    	 'thumbnail' => get_template_directory_uri() . '/images/left-sidebar.png'         
-    ),
-    'right-sidebar' => array(
-         'value'     => 'right-sidebar',
-    	 'label'     => __( 'Right Sidebar', 'rara-business' ),
-    	 'thumbnail' => get_template_directory_uri() . '/images/right-sidebar.png'         
-     )    
-);
+if( ! function_exists( 'rara_business_get_sidebar_layout_data' ) ){
+    function rara_business_get_sidebar_layout_data(){
+        return array(    
+            'default-sidebar'=> array(
+                'value'     => 'default-sidebar',
+                'label'     => __( 'Default Sidebar', 'rara-business' ),
+                'thumbnail' => get_template_directory_uri() . '/images/default-sidebar.png'
+            ),
+            'no-sidebar'     => array(
+                'value'     => 'no-sidebar',
+                'label'     => __( 'Full Width', 'rara-business' ),
+                'thumbnail' => get_template_directory_uri() . '/images/no-sidebar.png'
+            ),    
+            'left-sidebar' => array(
+                'value'     => 'left-sidebar',
+                'label'     => __( 'Left Sidebar', 'rara-business' ),
+                'thumbnail' => get_template_directory_uri() . '/images/left-sidebar.png'         
+            ),
+            'right-sidebar' => array(
+                'value'     => 'right-sidebar',
+                'label'     => __( 'Right Sidebar', 'rara-business' ),
+                'thumbnail' => get_template_directory_uri() . '/images/right-sidebar.png'         
+            )
+        );
+    }
+}
 
 function rara_business_sidebar_layout_callback(){
-    global $post, $rara_business_sidebar_layout;
+    global $post;
+    $rara_business_sidebar_layout = rara_business_get_sidebar_layout_data();
     wp_nonce_field( basename( __FILE__ ), 'rara_business_nonce' );
 ?>
  
@@ -77,7 +82,7 @@ function rara_business_sidebar_layout_callback(){
 }
 
 function rara_business_savesidebar_layout( $post_id ){
-      global $rara_business_sidebar_layout;
+    $rara_business_sidebar_layout = rara_business_get_sidebar_layout_data();
 
     // Verify the nonce before proceeding.
     if( !isset( $_POST[ 'rara_business_nonce' ] ) || !wp_verify_nonce( $_POST[ 'rara_business_nonce' ], basename( __FILE__ ) ) )

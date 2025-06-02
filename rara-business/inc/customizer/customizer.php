@@ -79,19 +79,24 @@ require get_template_directory() . '/inc/customizer-plugin-recommend/customizer-
 
 require get_template_directory() . '/inc/customizer-plugin-recommend/plugin-install/class-plugin-install-helper.php';
 
-$config_customizer = array(
-    'recommended_plugins' => array( 
-        'raratheme-companion' => array(
-            'recommended' => true,
-            'description' => sprintf( 
-                /* translators: %s: plugin name */
-                esc_html__( 'If you want to take full advantage of the features this theme has to offer, please install and activate %s plugin.', 'rara-business' ), '<strong>RaraTheme Companion</strong>' 
+if( ! function_exists( 'rara_business_customizer_notice_init' ) ) {
+	function rara_business_customizer_notice_init() {
+		$config_customizer = array(
+            'recommended_plugins' => array( 
+                'raratheme-companion' => array(
+                    'recommended' => true,
+                    'description' => sprintf( 
+                        /* translators: %s: plugin name */
+                        esc_html__( 'If you want to take full advantage of the features this theme has to offer, please install and activate %s plugin.', 'rara-business' ), '<strong>RaraTheme Companion</strong>' 
+                    ),
+                ),
             ),
-        ),
-    ),
-    'recommended_plugins_title' => esc_html__( 'Recommended Plugin', 'rara-business' ),
-    'install_button_label'      => esc_html__( 'Install and Activate', 'rara-business' ),
-    'activate_button_label'     => esc_html__( 'Activate', 'rara-business' ),
-    'deactivate_button_label'   => esc_html__( 'Deactivate', 'rara-business' ),
-);
-Rara_Business_Customizer_Notice::init( apply_filters( 'rara_business_customizer_notice_array', $config_customizer ) );
+            'recommended_plugins_title' => esc_html__( 'Recommended Plugin', 'rara-business' ),
+            'install_button_label'      => esc_html__( 'Install and Activate', 'rara-business' ),
+            'activate_button_label'     => esc_html__( 'Activate', 'rara-business' ),
+            'deactivate_button_label'   => esc_html__( 'Deactivate', 'rara-business' ),
+        );
+        Rara_Business_Customizer_Notice::init( apply_filters( 'rara_business_customizer_notice_array', $config_customizer ) );
+	}
+}
+add_action('init', 'rara_business_customizer_notice_init');

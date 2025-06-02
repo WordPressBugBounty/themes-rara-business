@@ -1,17 +1,17 @@
-# Copyright (C) 2024 Rara Theme
+# Copyright (C) 2025 Rara Theme
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Rara Business 1.2.8\n"
+"Project-Id-Version: Rara Business 1.2.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/rara-business\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-09T11:32:38+00:00\n"
+"POT-Creation-Date: 2025-06-02T09:14:18+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: rara-business\n"
 
 #. Theme Name of the theme
@@ -203,7 +203,7 @@ msgid "Install and activate"
 msgstr ""
 
 #: inc/customizer-plugin-recommend/plugin-install/class-plugin-install-helper.php:75
-#: inc/customizer/customizer.php:94
+#: inc/customizer/customizer.php:96
 #: inc/tgmpa/class-tgm-plugin-activation.php:2876
 #: build/dashboard.js:6210
 #: src/pages/UsefulPlugins/index.jsx:161
@@ -219,19 +219,19 @@ msgid "Successfully Flushed!"
 msgstr ""
 
 #. translators: %s: plugin name
-#: inc/customizer/customizer.php:88
+#: inc/customizer/customizer.php:90
 msgid "If you want to take full advantage of the features this theme has to offer, please install and activate %s plugin."
 msgstr ""
 
-#: inc/customizer/customizer.php:92
+#: inc/customizer/customizer.php:94
 msgid "Recommended Plugin"
 msgstr ""
 
-#: inc/customizer/customizer.php:93
+#: inc/customizer/customizer.php:95
 msgid "Install and Activate"
 msgstr ""
 
-#: inc/customizer/customizer.php:95
+#: inc/customizer/customizer.php:97
 msgid "Deactivate"
 msgstr ""
 
@@ -783,24 +783,24 @@ msgstr ""
 msgid "Sidebar Layout"
 msgstr ""
 
-#: inc/metabox.php:27
+#: inc/metabox.php:29
 #: inc/widgets.php:14
 msgid "Default Sidebar"
 msgstr ""
 
-#: inc/metabox.php:32
+#: inc/metabox.php:34
 msgid "Full Width"
 msgstr ""
 
-#: inc/metabox.php:37
+#: inc/metabox.php:39
 msgid "Left Sidebar"
 msgstr ""
 
-#: inc/metabox.php:42
+#: inc/metabox.php:44
 msgid "Right Sidebar"
 msgstr ""
 
-#: inc/metabox.php:54
+#: inc/metabox.php:59
 msgid "Choose Sidebar Template"
 msgstr ""
 
@@ -1783,7 +1783,8 @@ msgid "Rara Business Tutorial"
 msgstr ""
 
 #: build/dashboard.js:5885
-msgid "How to Start a Travel Blog in 2023 | Rara Business Tutorial"
+#: src/pages/Home/index.jsx:116
+msgid "How to create a business website in 2021 | Rara Business Tutorial"
 msgstr ""
 
 #: build/dashboard.js:5891
@@ -1859,7 +1860,8 @@ msgid "Creative Agency"
 msgstr ""
 
 #: build/dashboard.js:6071
-msgid "A powerful recipe plugin to create and display recipes for bloggers. SEO optimized and Schema-friendly to rank recipes higher on search engines."
+#: src/pages/UsefulPlugins/index.jsx:8
+msgid "23 extremely useful custom widgets to create an engaging website."
 msgstr ""
 
 #: build/dashboard.js:6074
@@ -1915,12 +1917,4 @@ msgstr ""
 #: build/dashboard.js:6286
 #: src/pages/index.js:41
 msgid "Useful Plugins"
-msgstr ""
-
-#: src/pages/Home/index.jsx:116
-msgid "How to create a business website in 2021 | Rara Business Tutorial"
-msgstr ""
-
-#: src/pages/UsefulPlugins/index.jsx:8
-msgid "23 extremely useful custom widgets to create an engaging website."
 msgstr ""
