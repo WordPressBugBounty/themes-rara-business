@@ -4,7 +4,7 @@ Contributors: raratheme
 Requires at least: 6.2
 Requires PHP: 7.3
 Tested up to: 6.8
-Stable tag: 1.2.9
+Stable tag: 1.3.0
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: two-columns, left-sidebar, right-sidebar, custom-header, custom-background, custom-logo, custom-menu, theme-options, featured-images, threaded-comments, full-width-template, footer-widgets, translation-ready, blog, e-commerce, portfolio
@@ -110,6 +110,9 @@ External resources linked to the theme.
     
 == Changelog ==
 
+    1.3.0 - August 01, 2025
+    * Update: Updated fontawesome and replaced twitter icon.
+    
     1.2.9 - June 02, 2025
     * Fix: Translation loading early issue has been fixed.
     
