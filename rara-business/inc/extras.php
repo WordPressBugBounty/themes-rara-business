@@ -774,16 +774,28 @@ function rara_business_load_preload_local_fonts( $url, $format = 'woff2' ) {
 endif;
 
 if( ! function_exists( 'rara_business_flush_local_google_fonts' ) ){
-    /**
-     * Ajax Callback for flushing the local font
-     */
+        /**
+         * Ajax Callback for flushing the local font
+         */
         function rara_business_flush_local_google_fonts() {
-        $WebFontLoader = new Rara_Business_WebFont_Loader();
-        //deleting the fonts folder using ajax
-        $WebFontLoader->delete_fonts_folder();
-        die();
+
+             // Verify nonce for CSRF protection
+            if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'rara_business_flush_fonts_nonce' ) ) {
+                wp_send_json_error( 'Invalid nonce', 403 );
+            }
+
+            // Check user capability - only administrators should flush fonts
+            if ( ! current_user_can( 'manage_options' ) ) {
+                wp_send_json_error( 'Insufficient permissions', 403 );
+            }
+
+            $WebFontLoader = new Rara_Business_WebFont_Loader();
+            //deleting the fonts folder using ajax
+            $WebFontLoader->delete_fonts_folder();
+            
+            wp_send_json_success();
+
         }
 }
 add_action( 'wp_ajax_flush_local_google_fonts', 'rara_business_flush_local_google_fonts' );
-add_action( 'wp_ajax_nopriv_flush_local_google_fonts', 'rara_business_flush_local_google_fonts' );
     

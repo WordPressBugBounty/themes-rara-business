@@ -57,7 +57,7 @@ if ( ! function_exists( 'rara_business_customizer_script' ) ) :
         $array = array(
             'ajax_url'   => admin_url( 'admin-ajax.php' ),
             'flushit'    => __( 'Successfully Flushed!','rara-business' ),
-            'nonce'      => wp_create_nonce('ajax-nonce')
+            'nonce'      => wp_create_nonce('rara_business_flush_fonts_nonce')
         );
         wp_enqueue_style( 'rara-business-customize-controls', get_template_directory_uri() . '/inc/css/customize-controls.css', array(), false , 'screen' );
         wp_enqueue_script( 'rara-business-customize-controls', get_template_directory_uri() . '/inc/js/customize-controls.js', array( 'jquery', 'customize-controls' ), false, true  );
