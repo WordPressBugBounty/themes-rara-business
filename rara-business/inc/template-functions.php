@@ -268,7 +268,11 @@ function rara_business_breadcrumb() {
 
                 if ( $thisCat->parent != 0 ) {
                     $parent_categories = get_category_parents( $thisCat->parent, false, ',' );
-                    $parent_categories = explode( ',', $parent_categories );
+                    if ( is_wp_error( $parent_categories ) || empty( $parent_categories ) ) {
+                        $parent_categories = array();
+                    } else {
+                        $parent_categories = explode( ',', $parent_categories );
+                    }
 
                     foreach ( $parent_categories as $parent_term ) {
                         $parent_obj = get_term_by( 'name', $parent_term, 'category' );
@@ -287,15 +291,21 @@ function rara_business_breadcrumb() {
                 //Displaying portfolio respective page template in the breadcrumbs 
                 $portfolio = rara_business_get_page_id_by_template( 'templates/portfolio.php' );
 
-                echo '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="' . esc_url( get_permalink( $portfolio[0] ) ) . '" itemprop="item"><span itemprop="name">' . esc_html( get_the_title( $portfolio[0] ) ) . '</span></a><meta itemprop="position" content="'. absint( $depth ).'" /><span class="separator">' . $delimiter . '</span></span>';
-                $depth++;
+                if( ! empty( $portfolio ) ){
+                    echo '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="' . esc_url( get_permalink( $portfolio[0] ) ) . '" itemprop="item"><span itemprop="name">' . esc_html( get_the_title( $portfolio[0] ) ) . '</span></a><meta itemprop="position" content="'. absint( $depth ).'" /><span class="separator">' . $delimiter . '</span></span>';
+                    $depth++;
+                }
 
                 //Displaying the parent child category/terms for the respective taxonomy
                 $queried_object = get_queried_object();
                 $taxonomy       = 'rara_portfolio_categories';
                 if( $queried_object->parent != 0 ) {
                     $parent_categories = get_term_parents_list( $queried_object->parent, $taxonomy, array( 'separator' => ',' ) );
-                    $parent_categories = explode( ',', $parent_categories );
+                    if ( is_wp_error( $parent_categories ) || empty( $parent_categories ) ) {
+                        $parent_categories = array();
+                    } else {
+                        $parent_categories = explode( ',', $parent_categories );
+                    }
                     foreach ( $parent_categories as $parent_term ) {
                         $parent_obj = get_term_by( 'name', $parent_term,$taxonomy );
                         if( is_object( $parent_obj ) ){
@@ -369,8 +379,10 @@ function rara_business_breadcrumb() {
                     $depth = 2;
                     $portfolio = rara_business_get_page_id_by_template( 'templates/portfolio.php' );
 
-                    echo '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="' . esc_url( get_permalink( $portfolio[0] ) ) . '" itemprop="item"><span itemprop="name">' . esc_html( get_the_title( $portfolio[0] ) ) . '</span></a><meta itemprop="position" content="'. absint( $depth ).'" /><span class="separator">' . $delimiter . '</span></span>';
-                    $depth++;
+                    if( ! empty( $portfolio ) ){
+                        echo '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="' . esc_url( get_permalink( $portfolio[0] ) ) . '" itemprop="item"><span itemprop="name">' . esc_html( get_the_title( $portfolio[0] ) ) . '</span></a><meta itemprop="position" content="'. absint( $depth ).'" /><span class="separator">' . $delimiter . '</span></span>';
+                        $depth++;
+                    }
 
                     $cat_object = get_the_terms( get_the_ID(), 'rara_portfolio_categories' );
                     $potential_parent = 0;
@@ -389,7 +401,11 @@ function rara_business_breadcrumb() {
                         
                         $cat = $cat_object[$use_term];
                         $cats = get_term_parents_list( $cat, 'rara_portfolio_categories', array( 'separator' => ',' ) );
-                        $cats = explode( ',', $cats );
+                        if ( is_wp_error( $cats ) || empty( $cats ) ) {
+                            $cats = array();
+                        } else {
+                            $cats = explode( ',', $cats );
+                        }
 
                         foreach ( $cats as $cat ) {
                             $cat_obj = get_term_by( 'name', $cat, 'rara_portfolio_categories' );
@@ -430,7 +446,11 @@ function rara_business_breadcrumb() {
                         $cat = $cat_object[$use_term];
                   
                         $cats = get_category_parents( $cat, false, ',' );
-                        $cats = explode( ',', $cats );
+                        if ( is_wp_error( $cats ) || empty( $cats ) ) {
+                            $cats = array();
+                        } else {
+                            $cats = explode( ',', $cats );
+                        }
 
                         foreach ( $cats as $cat ) {
                             $cat_obj = get_term_by( 'name', $cat, 'category' );
